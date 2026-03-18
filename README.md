@@ -125,3 +125,9 @@ This keeps the application simple and satisfies the assignment requirement.
 * Duplicate orders are allowed.
 * The application does not persist data after restart.
 * Customer types supported: **REGULAR** and **PREMIUM**.
+
+# Part-4 (Assessment)
+
+I choose Spring Boot for building modern applications such as REST APIs and microservices because it is simple to use, requires very little setup, and allows faster development and deployment.
+Would use OSGi when the application needs to be split into multiple independent modules, and when there is a requirement to update or manage those modules at runtime without restarting the system.
+OSGi is not a good fit for normal applications like basic CRUD or REST services, because it might cause extra complexity and makes the system harder to maintain when such advanced modularity is not really needed.
