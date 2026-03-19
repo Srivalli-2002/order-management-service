@@ -3,6 +3,7 @@ package org.example.orderservice.exception;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.validation.BindingResult;
@@ -45,9 +46,15 @@ public class GlobalExceptionHandlerTests {
 
     @Test
     void handleInvalidEnum_customerType() {
+
+        HttpInputMessage inputMessage = mock(HttpInputMessage.class);
+
         HttpMessageNotReadableException ex =
-                new HttpMessageNotReadableException("",
-                        new RuntimeException("CustomerType error"));
+                new HttpMessageNotReadableException(
+                        "Invalid input",
+                        new RuntimeException("CustomerType error"),
+                        inputMessage
+                );
 
         Map<String, String> result = handler.handleInvalidEnum(ex);
 
@@ -56,9 +63,15 @@ public class GlobalExceptionHandlerTests {
 
     @Test
     void handleInvalidEnum_orderDate() {
+
+        HttpInputMessage inputMessage = mock(HttpInputMessage.class);
+
         HttpMessageNotReadableException ex =
-                new HttpMessageNotReadableException("",
-                        new RuntimeException("orderDate error"));
+                new HttpMessageNotReadableException(
+                        "Invalid input",
+                        new RuntimeException("orderDate error"),
+                        inputMessage
+                );
 
         Map<String, String> result = handler.handleInvalidEnum(ex);
 
@@ -67,9 +80,15 @@ public class GlobalExceptionHandlerTests {
 
     @Test
     void handleInvalidEnum_generic() {
+
+        HttpInputMessage inputMessage = mock(HttpInputMessage.class);
+
         HttpMessageNotReadableException ex =
-                new HttpMessageNotReadableException("",
-                        new RuntimeException("some other error"));
+                new HttpMessageNotReadableException(
+                        "Invalid input",
+                        new RuntimeException("some other error"),
+                        inputMessage
+                );
 
         Map<String, String> result = handler.handleInvalidEnum(ex);
 
